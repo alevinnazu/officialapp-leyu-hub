@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f4f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e6edf4;
+            margin-bottom: 2.8rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 540;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-mark {
+            width: 8px;
+            height: 8px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .nav-links span {
+            cursor: default;
+            transition: color 0.2s;
+        }
+
+        .nav-links span:hover {
+            color: #2563eb;
+        }
+
+        /* 主卡片区 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+            border: 1px solid #eef3f8;
+            margin-bottom: 2.4rem;
+        }
+
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 580;
+            margin-bottom: 0.75rem;
+            color: #0b1f33;
+        }
+
+        .hero-card p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            color: #334155;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-tag {
+            display: inline-block;
+            background: #eef6ff;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #1e4b8a;
+            border: 1px solid #d4e2f5;
+            margin-top: 0.3rem;
+        }
+
+        /* 三个场景模块 — 卡片网格 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.6rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem 2rem;
+            border: 1px solid #e7eef5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: box-shadow 0.15s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+        }
+
+        .scene-card .emoji-big {
+            font-size: 2.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-card h3 {
+            font-weight: 540;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a2d45;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* 常见说明 + 摘要 */
+        .faq-area {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e3ebf3;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+
+        .faq-area h2 {
+            font-size: 1.5rem;
+            font-weight: 540;
+            margin-bottom: 0.3rem;
+            color: #0b1f33;
+        }
+
+        .faq-sub {
+            color: #475569;
+            margin-bottom: 1.6rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            border-top: 1px solid #eaf0f7;
+            padding: 1.2rem 0 0.6rem 0;
+        }
+
+        .faq-item:first-of-type {
+            border-top: none;
+            padding-top: 0.2rem;
+        }
+
+        .faq-q {
+            font-weight: 520;
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            color: #4b5a6e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-a a {
+            color: #1f4e8c;
+            text-decoration: none;
+            border-bottom: 1px solid #cbdbe9;
+            transition: border 0.2s;
+        }
+
+        .faq-a a:hover {
+            border-bottom-color: #1f4e8c;
+        }
+
+        .extra-note {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 1.4rem 1.8rem;
+            border: 1px solid #dee9f2;
+            margin-top: 1.6rem;
+            color: #2c3e5c;
+            font-size: 0.95rem;
+        }
+
+        .extra-note strong {
+            font-weight: 540;
+        }
+
+        .footer-meta {
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #dce5ed;
+            font-size: 0.85rem;
+            color: #65748c;
+            text-align: center;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+            .scene-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq-area {
+                padding: 1.6rem 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 顶部导航 -->
+    <div class="top-nav">
+        <div class="logo-area">
+            <span class="logo-mark"></span>
+            开云
+        </div>
+        <div class="nav-links">
+            <span>用途识别</span>
+            <span>场景示例</span>
+            <span>常见说明</span>
+        </div>
+    </div>
+
+    <!-- 核心介绍 -->
+    <div class="hero-card">
+        <h1>快速识别网站用途</h1>
+        <p>
+            面对一个新站点，大多数用户第一时间想弄明白的是：<strong>这个平台能做什么？</strong>
+            通过清晰的场景划分和功能预览，<a href="https://zh-kaicloud.com" style="color:#1d4f8f; text-decoration: none; border-bottom: 1px solid #b3cde3;">开云</a> 希望让每一位访客在几秒钟内找到自己的兴趣区域，而不必反复猜测入口在哪里。
+        </p>
+        <span class="intro-tag">轻量导航 · 直观结构</span>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scene-grid">
+        <div class="scene-card">
+            <div class="emoji-big">&#x1F4BB;</div>
+            <h3>信息获取</h3>
+            <p>无论你想了解产品动态、阅读使用指南，还是浏览功能更新，都通过清晰的内容分区完成，省去层层跳转。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-big">&#x1F3ED;</div>
+            <h3>工具与操作</h3>
+            <p>直接使用在线工具、管理配置或查看数据面板，每个功能入口都带有简要说明，降低尝试成本。</p>
+        </div>
+        <div class="scene-card">
+            <div class="emoji-big">&#x1F91D;</div>
+            <h3>联系与支持</h3>
+            <p>常见问题、联系方式与反馈渠道集中在一个区域，遇到疑问时不必四处搜索，节省时间。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 + FAQ摘要 -->
+    <div class="faq-area">
+        <h2>常见说明</h2>
+        <div class="faq-sub">一些用户经常关心的问题，简单汇总在这里</div>
+
+        <div class="faq-item">
+            <div class="faq-q">&#x2022; 网站目前提供哪几类内容？</div>
+            <div class="faq-a">
+                主要分为产品介绍、操作指南和平台动态三类。每一类都配有简短的预览卡片，方便你快速判断是否与自己相关。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">&#x2022; 是否需要注册才能浏览？</div>
+            <div class="faq-a">
+                大部分介绍性内容无需注册即可阅读。涉及个性化工具或数据管理时，建议注册账户以获得完整体验。<a href="https://zh-kaicloud.com">开云</a> 对注册流程做了简化，几分钟即可完成。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">&#x2022; 遇到使用问题该找谁？</div>
+            <div class="faq-a">
+                在帮助与支持页面可以找到常见故障排除方案，同时也可以通过页面上的反馈入口提交问题，通常会在一个工作日内收到回复。
+            </div>
+        </div>
+
+        <div class="extra-note">
+            <strong>一点提示：</strong> 如果你刚接触 <a href="https://zh-kaicloud.com" style="color:#1d4f8c; text-decoration: none; border-bottom: 1px solid #b3cde3;">开云</a>，建议从导航栏的“用途识别”模块开始，那里浓缩了最常用的几个方向。实际体验往往比文字描述更直观。
+        </div>
+    </div>
+
+    <div class="footer-meta">
+        — 轻量导航 · 温和指引 —
+    </div>
+
+</div>
+</body>
+</html>
